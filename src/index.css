@@ -1,19 +1,439 @@
+/* Tema oscuro de la Guía 1 (legacy/guia1/root.css) aplicado sobre las
+   variables del modo oscuro de Bootstrap 5.3 (data-bs-theme="dark"). */
+[data-bs-theme='dark'] {
+  --nx-primario: #3d63dd;
+  --nx-primario-hover: #5a7be4;
+  --nx-primario-activo: #2648c2;
+  --nx-primario-suave: rgba(61, 99, 221, 0.14);
+  --nx-cian: #0cc0e9;
+  --nx-superficie: #0d1527;
+  --nx-tarjeta: #111c35;
+  --nx-input: #0b1325;
+  --nx-borde: rgba(255, 255, 255, 0.1);
+
+  --bs-body-bg: #090d16;
+  --bs-body-color: #f8fafc;
+  --bs-secondary-color: #94a3b8;
+  --bs-tertiary-bg: #0d1527;
+  --bs-border-color: rgba(255, 255, 255, 0.12);
+  --bs-primary: #3d63dd;
+  --bs-primary-rgb: 61, 99, 221;
+  --bs-link-color: #7b98f0;
+  --bs-link-color-rgb: 123, 152, 240;
+  --bs-link-hover-color: #a5b8f5;
+  --bs-link-hover-color-rgb: 165, 184, 245;
+  --bs-body-font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --bs-form-valid-color: #34d399;
+  --bs-form-valid-border-color: #10b981;
+  --bs-form-invalid-color: #fb7185;
+  --bs-form-invalid-border-color: #f43f5e;
+  --bs-focus-ring-color: rgba(61, 99, 221, 0.35);
+}
+
 html {
   scroll-behavior: smooth;
 }
 
-/* Evita que el navbar fijo tape el título de cada sección al navegar con anclas. */
+html,
+body {
+  background-color: #090d16;
+}
+
+body {
+  background-image: radial-gradient(circle at 10% 0%, #172554 0, #0b1329 700px, transparent 1400px);
+  background-repeat: no-repeat;
+}
+
+.font-display {
+  font-family: 'Plus Jakarta Sans', var(--bs-body-font-family);
+}
+
+/* Evita que el navbar fijo tape el inicio de cada sección al navegar con anclas. */
 section,
 header {
   scroll-margin-top: 4.5rem;
 }
 
-.hero {
-  background: linear-gradient(135deg, #0b1220 0%, #15264a 60%, #1d3f8a 100%);
+.salto-contenido {
+  position: absolute;
+  top: 0.5rem;
+  left: 0.5rem;
+  z-index: 1100;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  background: var(--nx-primario);
+  color: #fff;
+}
+
+/* ---------- Botones ---------- */
+.btn-primary {
+  --bs-btn-bg: var(--nx-primario);
+  --bs-btn-border-color: var(--nx-primario);
+  --bs-btn-hover-bg: var(--nx-primario-hover);
+  --bs-btn-hover-border-color: var(--nx-primario-hover);
+  --bs-btn-active-bg: var(--nx-primario-activo);
+  --bs-btn-active-border-color: var(--nx-primario-activo);
+  --bs-btn-disabled-bg: var(--nx-primario);
+  --bs-btn-disabled-border-color: var(--nx-primario);
+  box-shadow: 0 8px 24px -8px rgba(61, 99, 221, 0.6);
+}
+
+/* ---------- Navbar ---------- */
+.barra-navegacion {
+  background: rgba(9, 13, 22, 0.75);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--nx-borde);
+}
+
+/* ---------- Identidad visual ---------- */
+.logo-caja {
+  display: inline-grid;
+  place-items: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 0.75rem;
+  background: linear-gradient(135deg, var(--nx-primario), var(--nx-cian));
+  color: #fff;
+  box-shadow: 0 6px 20px -6px rgba(12, 192, 233, 0.6);
+}
+
+.logo-caja-sm {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 0.6rem;
+  font-size: 0.875rem;
+}
+
+.logo-insignia {
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  color: var(--nx-cian);
+  font-weight: 600;
+}
+
+.pildora-estado {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 0.85rem;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: #34d399;
+  background: rgba(16, 185, 129, 0.12);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+.punto-pulso {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background: #10b981;
+  animation: pulso 2s ease-in-out infinite;
+}
+
+@keyframes pulso {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.6);
+  }
+  50% {
+    box-shadow: 0 0 0 6px rgba(16, 185, 129, 0);
+  }
+}
+
+.texto-degradado {
+  background: linear-gradient(90deg, #7b98f0, var(--nx-cian));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.caracteristica-icono,
+.insignia-icono,
+.insignia-cabecera {
+  display: inline-grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 0.75rem;
+  background: var(--nx-primario-suave);
+  color: #7b98f0;
+  border: 1px solid rgba(61, 99, 221, 0.25);
+}
+
+.tarjeta-vidrio {
+  border-radius: 1rem;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--nx-borde);
+  backdrop-filter: blur(8px);
+}
+
+/* ---------- Servicios ---------- */
+.tarjeta-servicio {
+  background: var(--nx-tarjeta);
+  border: 1px solid var(--nx-borde);
+  border-radius: 1rem;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.tarjeta-servicio:hover {
+  transform: translateY(-4px);
+  border-color: rgba(61, 99, 221, 0.5);
+}
+
+/* ---------- Portal de acceso ---------- */
+.tarjeta-acceso {
+  max-width: 34rem;
+  border-radius: 1.5rem;
+  overflow: hidden;
+  background: var(--nx-superficie);
+  border: 1px solid var(--nx-borde);
+  box-shadow: 0 30px 80px -20px rgba(0, 0, 0, 0.7);
+}
+
+@media (min-width: 992px) {
+  .tarjeta-acceso {
+    display: grid;
+    grid-template-columns: 5fr 6fr;
+    max-width: 72rem;
+    transition: grid-template-columns 0.3s ease;
+  }
+
+  /* El registro tiene más campos: el panel de formularios gana espacio. */
+  .tarjeta-acceso.modo-register {
+    grid-template-columns: 4fr 7fr;
+  }
+}
+
+.panel-informativo {
+  position: relative;
+  background:
+    radial-gradient(circle at 0% 0%, rgba(61, 99, 221, 0.35), transparent 55%),
+    radial-gradient(circle at 100% 100%, rgba(12, 192, 233, 0.18), transparent 50%),
+    #0b1329;
+  border-right: 1px solid var(--nx-borde);
+}
+
+.grafico-red {
+  width: 100%;
+  max-width: 24rem;
+}
+
+.nodo-central {
+  animation: latido 2.4s ease-in-out infinite;
+  transform-origin: 200px 115px;
+}
+
+@keyframes latido {
+  50% {
+    transform: scale(1.25);
+  }
+}
+
+.pestanas {
+  padding: 0.3rem;
+  border-radius: 0.85rem;
+  background: #0a1122;
+  border: 1px solid var(--nx-borde);
+  --bs-nav-pills-border-radius: 0.6rem;
+  --bs-nav-pills-link-active-bg: var(--nx-primario);
+  --bs-nav-link-color: var(--bs-secondary-color);
+  --bs-nav-link-hover-color: var(--bs-body-color);
+}
+
+.pestanas .nav-link {
+  white-space: nowrap;
+}
+
+@media (max-width: 400px) {
+  .pestanas .nav-link {
+    padding-inline: 0.5rem;
+    font-size: 0.875rem;
+  }
+}
+
+.vista-formulario {
+  animation: aparecer 0.3s ease;
+}
+
+@keyframes aparecer {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+}
+
+/* ---------- Campos ---------- */
+.form-control,
+.input-group-text,
+.btn-campo {
+  background-color: var(--nx-input);
+  border-color: rgba(255, 255, 255, 0.14);
+}
+
+.form-control:focus {
+  background-color: #101c38;
+}
+
+/* Más tenue que el texto real para no confundir el ejemplo con un valor escrito. */
+.form-control::placeholder {
+  color: #4f5d75;
+}
+
+.input-group-text {
+  color: var(--bs-secondary-color);
+  min-width: 2.75rem;
+  justify-content: center;
+}
+
+.btn-campo {
+  color: var(--bs-secondary-color);
+  border: var(--bs-border-width) solid rgba(255, 255, 255, 0.14);
+}
+
+.btn-campo:hover {
+  color: var(--bs-body-color);
+  background-color: #101c38;
+}
+
+.form-label {
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+
+.form-text {
+  font-size: 0.78rem;
+}
+
+.seccion-form {
+  padding: 1.25rem;
+  border-radius: 1rem;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--nx-borde);
+}
+
+.seccion-titulo {
+  float: none;
+  width: auto;
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.seccion-indice {
+  display: inline-block;
+  padding: 0.1rem 0.5rem;
+  margin-right: 0.35rem;
+  border-radius: 0.4rem;
+  background: var(--nx-primario-suave);
+  color: #7b98f0;
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 0.8rem;
+}
+
+.progress {
+  height: 0.4rem;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.progress-bar {
+  transition: width 0.3s ease;
+}
+
+.regla {
+  font-weight: 500;
+  color: var(--bs-secondary-color);
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--nx-borde);
+}
+
+.regla-cumplida {
+  color: #34d399;
+  background: rgba(16, 185, 129, 0.12);
+  border-color: rgba(16, 185, 129, 0.35);
+}
+
+.insignia-seguridad {
+  background: rgba(16, 185, 129, 0.06);
+  border: 1px solid rgba(16, 185, 129, 0.2);
+}
+
+.insignia-seguridad .insignia-icono {
+  color: #34d399;
+  background: rgba(16, 185, 129, 0.12);
+  border-color: rgba(16, 185, 129, 0.3);
+}
+
+/* ---------- Notificaciones (toasts) ---------- */
+/* Debajo del navbar fijo y por encima del resto del contenido. */
+.contenedor-notificaciones {
+  top: 4.5rem;
+  right: 0;
+  z-index: 1090;
+}
+.notificacion {
+  --bs-toast-bg: #111c35;
+  --bs-toast-border-color: var(--nx-borde);
+  --bs-toast-max-width: 380px;
+  overflow: hidden;
+  box-shadow: 0 16px 40px -12px rgba(0, 0, 0, 0.8);
+  animation: entrar 0.25s ease;
+}
+
+.notificacion-success {
+  border-left: 3px solid #10b981;
+}
+
+.notificacion-danger {
+  border-left: 3px solid #f43f5e;
+}
+
+.notificacion-progreso {
+  height: 3px;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.notificacion-progreso > div {
+  height: 100%;
+  animation-name: vaciar;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+}
+
+@keyframes vaciar {
+  from {
+    width: 100%;
+  }
+  to {
+    width: 0%;
+  }
+}
+
+@keyframes entrar {
+  from {
+    opacity: 0;
+    transform: translateX(16px);
+  }
+}
+
+/* ---------- Footer ---------- */
+.pie {
+  border-top: 1px solid var(--nx-borde);
+  background: rgba(9, 13, 22, 0.8);
 }
 
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
 }

@@ -1,27 +1,32 @@
 const DATOS = [
-  { valor: '24/7', texto: 'Monitoreo de accesos' },
-  { valor: '+593', texto: 'Soporte local en Ecuador' },
-  { valor: 'WCAG', texto: 'Formularios accesibles' },
+  { icono: 'fa-shield-halved', valor: '24/7', texto: 'Monitoreo de accesos' },
+  { icono: 'fa-location-dot', valor: '+593', texto: 'Soporte local en Ecuador' },
+  { icono: 'fa-universal-access', valor: 'WCAG 2.2', texto: 'Formularios accesibles' },
 ]
 
 function Hero() {
   return (
-    <header id="inicio" className="hero text-white py-5">
+    <header id="inicio" className="hero py-5">
       <div className="container py-lg-5">
-        <div className="row align-items-center g-4">
+        <div className="row align-items-center gy-5 gx-lg-5">
           <div className="col-12 col-lg-7 text-center text-lg-start">
-            <span className="badge text-bg-primary mb-3">Gestión de identidad para empresas</span>
-            <h1 className="display-5 fw-bold">Controla quién entra a tu organización</h1>
-            <p className="lead text-white-50 my-4">
-              NexusAuth centraliza el inicio de sesión de tu equipo, valida los datos en tiempo
-              real y te ayuda a mantener seguros los accesos a tus sistemas.
+            <span className="pildora-estado mb-4">
+              <span className="punto-pulso" aria-hidden="true" />
+              Sistemas seguros y activos
+            </span>
+            <h1 className="display-4 fw-bold font-display lh-sm">
+              Controla quién entra a <span className="texto-degradado">tu organización</span>
+            </h1>
+            <p className="lead text-body-secondary my-4">
+              NexusAuth centraliza el inicio de sesión de tu equipo, valida los datos en tiempo real y te
+              ayuda a mantener seguros los accesos a tus sistemas.
             </p>
-            <div className="d-flex flex-column flex-sm-row gap-2 justify-content-center justify-content-lg-start">
-              <a href="#acceso" className="btn btn-primary btn-lg">
-                Probar el acceso
+            <div className="d-flex flex-column flex-sm-row gap-3 justify-content-center justify-content-lg-start">
+              <a href="#/register" className="btn btn-primary btn-lg px-4">
+                Crear cuenta <i className="fa-solid fa-arrow-right ms-2" aria-hidden="true" />
               </a>
-              <a href="#servicios" className="btn btn-outline-light btn-lg">
-                Ver servicios
+              <a href="#/login" className="btn btn-outline-light btn-lg px-4">
+                Iniciar sesión
               </a>
             </div>
           </div>
@@ -30,10 +35,13 @@ function Hero() {
             <div className="row g-3">
               {DATOS.map((dato) => (
                 <div className="col-12 col-sm-4 col-lg-12" key={dato.texto}>
-                  <div className="card bg-white bg-opacity-10 border-0 text-white text-center text-lg-start">
-                    <div className="card-body">
-                      <p className="h3 fw-bold mb-0">{dato.valor}</p>
-                      <p className="mb-0 text-white-50">{dato.texto}</p>
+                  <div className="tarjeta-vidrio d-flex flex-column flex-lg-row align-items-center gap-3 p-3 text-center text-lg-start h-100">
+                    <span className="caracteristica-icono" aria-hidden="true">
+                      <i className={`fa-solid ${dato.icono}`} />
+                    </span>
+                    <div>
+                      <p className="h4 fw-bold font-display mb-0">{dato.valor}</p>
+                      <p className="mb-0 small text-body-secondary">{dato.texto}</p>
                     </div>
                   </div>
                 </div>

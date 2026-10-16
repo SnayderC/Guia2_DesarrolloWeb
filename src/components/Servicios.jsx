@@ -1,17 +1,21 @@
 const SERVICIOS = [
   {
+    icono: 'fa-right-to-bracket',
     titulo: 'Inicio de sesión centralizado',
     descripcion: 'Un único punto de acceso para todas las aplicaciones internas de tu empresa.',
   },
   {
+    icono: 'fa-list-check',
     titulo: 'Validación en tiempo real',
     descripcion: 'Los formularios detectan datos incorrectos antes de enviarlos y explican cómo corregirlos.',
   },
   {
+    icono: 'fa-magnifying-glass-chart',
     titulo: 'Auditoría de accesos',
     descripcion: 'Registro de intentos de ingreso para detectar actividad sospechosa a tiempo.',
   },
   {
+    icono: 'fa-headset',
     titulo: 'Soporte especializado',
     descripcion: 'Acompañamiento en la configuración de cuentas y políticas de contraseñas.',
   },
@@ -20,20 +24,23 @@ const SERVICIOS = [
 function Servicios() {
   return (
     <section id="servicios" className="py-5">
-      <div className="container">
+      <div className="container py-lg-4">
         <div className="text-center mb-5">
-          <h2 className="fw-bold">Nuestros servicios</h2>
-          <p className="text-secondary">Todo lo que necesitas para gestionar los accesos de tu equipo.</p>
+          <span className="text-primary fw-semibold small text-uppercase">Servicios</span>
+          <h2 className="display-6 fw-bold font-display mt-2">Todo lo que necesitas para gestionar accesos</h2>
+          <p className="text-body-secondary">Herramientas pensadas para equipos que se toman en serio la seguridad.</p>
         </div>
 
         <div className="row g-4">
-          {SERVICIOS.map((servicio, indice) => (
+          {SERVICIOS.map((servicio) => (
             <div className="col-12 col-md-6 col-lg-3" key={servicio.titulo}>
-              <div className="card h-100 shadow-sm border-0">
-                <div className="card-body">
-                  <span className="badge rounded-pill text-bg-primary mb-3">0{indice + 1}</span>
-                  <h3 className="h5 card-title">{servicio.titulo}</h3>
-                  <p className="card-text text-secondary">{servicio.descripcion}</p>
+              <div className="card tarjeta-servicio h-100">
+                <div className="card-body p-4">
+                  <span className="caracteristica-icono mb-3" aria-hidden="true">
+                    <i className={`fa-solid ${servicio.icono}`} />
+                  </span>
+                  <h3 className="h5 card-title font-display">{servicio.titulo}</h3>
+                  <p className="card-text text-body-secondary small">{servicio.descripcion}</p>
                 </div>
               </div>
             </div>

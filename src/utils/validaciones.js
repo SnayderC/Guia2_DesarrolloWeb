@@ -15,7 +15,7 @@ const GMAIL_REGEX = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@gmail\.com$/i
 const NOMBRE_REGEX = /^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/
 const TELEFONO_REGEX = /^\+593[0-9]{9}$/
 
-const estaVacio = (valor) => (valor ?? '').trim() === ''
+const estaVacio = (valor) => String(valor ?? '').trim() === ''
 
 export function validarEmail(valor) {
   if (estaVacio(valor)) return MENSAJES.requerido
@@ -26,21 +26,10 @@ export function validarEmail(valor) {
 // La contraseña no se recorta: los espacios forman parte de la credencial.
 export function validarPassword(valor) {
   if (estaVacio(valor)) return MENSAJES.requerido
-  const tieneLetra = /[a-zA-Z]/.test(valor)
-  const tieneNumero = /[0-9]/.test(valor)
-  if (valor.length < 8 || !tieneLetra || !tieneNumero) return MENSAJES.password
+  const { largo, letra, numero } = evaluarFortaleza(valor)
+  if (!largo || !letra || !numero) return MENSAJES.password
   return ''
 }
-
-export function validarLogin({ email, password }) {
-  return {
-    email: validarEmail(email),
-    password: validarPassword(password),
-  }
-}
-
-// Reglas del formulario de registro de la Guía 1. Se conservan para no perder
-// ninguna validación, aunque la landing solo integra el login.
 
 export function validarNombre(valor) {
   if (estaVacio(valor)) return MENSAJES.requerido
@@ -51,7 +40,7 @@ export function validarNombre(valor) {
 
 // Mejora respecto a la Guía 1: parseInt aceptaba decimales ("25.9" → 25).
 export function validarEdad(valor) {
-  if (estaVacio(String(valor ?? ''))) return MENSAJES.requerido
+  if (estaVacio(valor)) return MENSAJES.requerido
   const texto = String(valor).trim()
   if (!/^\d+$/.test(texto)) return MENSAJES.edad
   const edad = Number(texto)
@@ -71,6 +60,14 @@ export function validarConfirmacion(confirmacion, password) {
   return ''
 }
 
+// Reglas del medidor de fortaleza del registro.
+export function evaluarFortaleza(password = '') {
+  const largo = password.length >= 8
+  const letra = /[a-zA-Z]/.test(password)
+  const numero = /[0-9]/.test(password)
+  return { largo, letra, numero, puntaje: [largo, letra, numero].filter(Boolean).length }
+}
+
 // Equivale al filtro en tiempo real del teléfono de la Guía 1: solo un "+"
 // inicial y dígitos, con un máximo de 13 caracteres.
 export function sanitizarTelefono(valor) {
@@ -81,4 +78,23 @@ export function sanitizarTelefono(valor) {
 
 export function hayErrores(errores) {
   return Object.values(errores).some(Boolean)
+}
+
+// Validadores por formulario. Reciben (valor, datosDelFormulario).
+export const VALIDADORES_LOGIN = {
+  email: validarEmail,
+  password: validarPassword,
+}
+
+export const VALIDADORES_REGISTRO = {
+  fullname: validarNombre,
+  email: validarEmail,
+  age: validarEdad,
+  phone: validarTelefono,
+  password: validarPassword,
+  confirmPassword: (valor, datos) => validarConfirmacion(valor, datos.password),
+}
+
+export const VALIDADORES_RECUPERACION = {
+  email: validarEmail,
 }

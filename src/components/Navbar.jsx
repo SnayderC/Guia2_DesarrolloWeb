@@ -13,9 +13,12 @@ function Navbar() {
   const cerrarMenu = () => setAbierto(false)
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+    <nav className="navbar navbar-expand-lg sticky-top barra-navegacion">
       <div className="container">
-        <a className="navbar-brand fw-bold" href="#inicio" onClick={cerrarMenu}>
+        <a className="navbar-brand d-flex align-items-center gap-2 fw-bold font-display" href="#inicio" onClick={cerrarMenu}>
+          <span className="logo-caja logo-caja-sm" aria-hidden="true">
+            <i className="fa-solid fa-cube" />
+          </span>
           NexusAuth
         </a>
         <button
@@ -30,7 +33,7 @@ function Navbar() {
         </button>
 
         <div className={`collapse navbar-collapse${abierto ? ' show' : ''}`} id="menu-principal">
-          <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
+          <ul className="navbar-nav ms-auto mb-3 mb-lg-0">
             {ENLACES.map((enlace) => (
               <li className="nav-item" key={enlace.href}>
                 <a className="nav-link" href={enlace.href} onClick={cerrarMenu}>
@@ -39,9 +42,14 @@ function Navbar() {
               </li>
             ))}
           </ul>
-          <a className="btn btn-primary ms-lg-3" href="#acceso" onClick={cerrarMenu}>
-            Iniciar sesión
-          </a>
+          <div className="d-flex flex-column flex-lg-row gap-2 ms-lg-3 pb-3 pb-lg-0">
+            <a className="btn btn-outline-light" href="#/login" onClick={cerrarMenu}>
+              Iniciar sesión
+            </a>
+            <a className="btn btn-primary" href="#/register" onClick={cerrarMenu}>
+              Crear cuenta
+            </a>
+          </div>
         </div>
       </div>
     </nav>
