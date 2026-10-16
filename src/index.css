@@ -1,0 +1,19 @@
+html {
+  scroll-behavior: smooth;
+}
+
+/* Evita que el navbar fijo tape el título de cada sección al navegar con anclas. */
+section,
+header {
+  scroll-margin-top: 4.5rem;
+}
+
+.hero {
+  background: linear-gradient(135deg, #0b1220 0%, #15264a 60%, #1d3f8a 100%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
