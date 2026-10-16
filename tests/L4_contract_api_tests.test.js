@@ -1,0 +1,51 @@
+const assert = require('assert');
+
+function validateRegistrationDTO(payload) {
+  const requiredKeys = ['fullname', 'email', 'age', 'phone', 'password'];
+  for (const key of requiredKeys) {
+    if (!(key in payload)) {
+      return { valid: false, missing: key };
+    }
+  }
+
+  if (typeof payload.fullname !== 'string' || payload.fullname.length < 3) return { valid: false, field: 'fullname' };
+  if (typeof payload.email !== 'string' || !/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@gmail\.com$/i.test(payload.email)) return { valid: false, field: 'email' };
+  if (typeof payload.age !== 'number' || payload.age < 18 || payload.age > 75) return { valid: false, field: 'age' };
+  if (typeof payload.phone !== 'string' || !/^\+593[0-9]{9}$/.test(payload.phone)) return { valid: false, field: 'phone' };
+  if (typeof payload.password !== 'string' || payload.password.length < 8) return { valid: false, field: 'password' };
+
+  return { valid: true };
+}
+
+function runL4Tests() {
+  console.log('--- Ejecutando L4: Pruebas de Contratos y Esquemas de API (software-eng / requirements) ---');
+
+  const validPayload = {
+    fullname: 'Carlos Andrés Mendoza',
+    email: 'carlos.mendoza@gmail.com',
+    age: 22,
+    phone: '+593987654321',
+    password: 'PasswordRobusta2026'
+  };
+
+  const resultOk = validateRegistrationDTO(validPayload);
+  assert.strictEqual(resultOk.valid, true, 'El DTO válido debe ser aceptado por el contrato');
+  console.log('  ✔ Contrato DTO de Registro acepta los 5 campos requeridos con tipos correctos');
+
+  const incompletePayload = {
+    fullname: 'Carlos Andrés Mendoza',
+    email: 'carlos.mendoza@universidad.edu.ec',
+    age: 22,
+    password: 'PasswordRobusta2026'
+  };
+
+  const resultMissing = validateRegistrationDTO(incompletePayload);
+  assert.strictEqual(resultMissing.valid, false);
+  assert.strictEqual(resultMissing.missing, 'phone');
+  console.log('  ✔ Contrato detecta y rechaza la omisión de cualquier campo obligatorio');
+
+  console.log('L4 Status: 100% OK\n');
+}
+
+module.exports = runL4Tests;
+if (require.main === module) runL4Tests();

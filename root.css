@@ -1,0 +1,111 @@
+:root {
+  
+  --color-primary-h: 226;
+  --color-primary-s: 70%;
+  --color-primary-l: 55%;
+  --color-primary: hsl(var(--color-primary-h), var(--color-primary-s), var(--color-primary-l));
+  --color-primary-hover: hsl(var(--color-primary-h), var(--color-primary-s), 62%);
+  --color-primary-active: hsl(var(--color-primary-h), var(--color-primary-s), 45%);
+  --color-primary-subtle: hsla(var(--color-primary-h), var(--color-primary-s), var(--color-primary-l), 0.12);
+  --color-primary-glow: hsla(var(--color-primary-h), var(--color-primary-s), var(--color-primary-l), 0.35);
+
+  --color-accent-cyan: hsl(190, 95%, 48%);
+  --color-accent-cyan-subtle: hsla(190, 95%, 48%, 0.12);
+
+  --bg-app: #090d16;
+  --bg-gradient: radial-gradient(circle at 10% 20%, #172554 0%, #0b1329 45%, #050811 100%);
+  --surface-panel: #0d1527;
+  --surface-card: #111c35;
+  --surface-card-subtle: #172442;
+  --surface-input: #0b1325;
+  --surface-input-focus: #101c38;
+  --surface-tab-track: #0a1122;
+
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-default: rgba(255, 255, 255, 0.14);
+  --border-hover: rgba(255, 255, 255, 0.25);
+  --border-focus: hsl(var(--color-primary-h), var(--color-primary-s), 65%);
+  --border-glow: hsla(var(--color-primary-h), var(--color-primary-s), var(--color-primary-l), 0.4);
+
+  --text-primary: #f8fafc;
+  --text-secondary: #cbd5e1;
+  --text-muted: #94a3b8;
+  --text-faint: #64748b;
+  --text-inverted: #020617;
+
+  --color-success: #10b981;
+  --color-success-subtle: rgba(16, 185, 129, 0.15);
+  --color-success-border: rgba(16, 185, 129, 0.35);
+  --color-success-text: #34d399;
+
+  --color-danger: #f43f5e;
+  --color-danger-subtle: rgba(244, 63, 94, 0.15);
+  --color-danger-border: rgba(244, 63, 94, 0.35);
+  --color-danger-text: #fb7185;
+
+  --color-warning: #f59e0b;
+  --color-warning-subtle: rgba(245, 158, 11, 0.15);
+  --color-warning-border: rgba(245, 158, 11, 0.35);
+  --color-warning-text: #fbbf24;
+
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-display: 'Plus Jakarta Sans', var(--font-sans);
+
+  --font-size-2xs: 0.6875rem; 
+  --font-size-xs: 0.75rem;     
+  --font-size-sm: 0.875rem;    
+  --font-size-base: 1rem;      
+  --font-size-md: 1.125rem;    
+  --font-size-lg: 1.25rem;     
+  --font-size-xl: 1.5rem;      
+  --font-size-2xl: 1.875rem;   
+  --font-size-3xl: 2.25rem;    
+
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --font-weight-extrabold: 800;
+
+  --line-height-tight: 1.2;
+  --line-height-snug: 1.35;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.625;
+
+  --space-3xs: 0.125rem; 
+  --space-2xs: 0.25rem;  
+  --space-xs: 0.5rem;    
+  --space-sm: 0.75rem;   
+  --space-md: 1rem;      
+  --space-lg: 1.5rem;    
+  --space-xl: 2rem;      
+  --space-2xl: 2.5rem;   
+  --space-3xl: 3.5rem;   
+
+  --radius-xs: 4px;
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --radius-xl: 20px;
+  --radius-2xl: 28px;
+  --radius-full: 9999px;
+
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.45), 0 2px 4px -2px rgba(0, 0, 0, 0.35);
+  --shadow-lg: 0 10px 25px -5px rgba(0, 0, 0, 0.6), 0 8px 10px -6px rgba(0, 0, 0, 0.5);
+  --shadow-card: 0 25px 50px -12px rgba(0, 0, 0, 0.75), 0 0 0 1px var(--border-subtle);
+  --shadow-button-primary: 0 4px 14px 0 hsla(var(--color-primary-h), var(--color-primary-s), 50%, 0.4);
+  --shadow-toast: 0 20px 40px -10px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(255, 255, 255, 0.1);
+
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+  --duration-fast: 150ms;
+  --duration-normal: 280ms;
+  --duration-slow: 420ms;
+
+  --z-base: 1;
+  --z-card: 10;
+  --z-header: 50;
+  --z-toast: 1000;
+  --z-skip-link: 9999;
+}
